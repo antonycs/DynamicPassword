@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>D password</title>
+
+  <!-- CSS -->
+
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="assets/css/form-elements.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <script type="text/javascript">
+  </script>
+
+  <!-- Favicon and touch icons -->
+  <link rel="shortcut icon" href="assets/ico/favicon.png">
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
+
+</head>
+
+<body>
+
+  <!-- Top content -->
+  <div class="top-content">
+
+    <div class="inner-bg">
+      <div class="container">
+
+        <div class="row">
+          <div class="col-sm-8 col-sm-offset-2 text">
+            <h1><strong>D</strong>-PASSWORD</h1>
+            <h4>Dynamic Password</h4>
+            <div class="description">
+
+
+
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-5">
+
+
+            <div class="form-box">
+              <div class="form-top">
+                <div class="form-top-left">
+                  <h3>Register now</h3>
+                  <p>Fill in the form below to get instant access:</p>
+                </div>
+                <div class="form-top-right">
+                  <i class="fa fa-pencil"></i>
+                </div>
+              </div>
+              <div class="form-bottom">
+                <form role="form" action="" method="post" class="registration-form">
+                  <div class="form-group">
+                    <label class="sr-only" for="form-first-name">First name</label>
+                    <input type="text" name="f_name" placeholder="First name..." class="form-first-name form-control" id="f_name">
+                  </div>
+                  <div class="form-group">
+                    <label class="sr-only" for="form-last-name">Last name</label>
+                    <input type="text" name="l_name" placeholder="Last name..." class="form-last-name form-control" id="l_name">
+                  </div>
+                  <div class="form-group">
+                    <label class="sr-only" for="form-email">Email</label>
+                    <input type="text" name="email" placeholder="Email..." class="form-email form-control" id="email">
+                  </div>
+                  <div class="form-group">
+                    <label class="sr-only" for="form-about-yourself">Address</label>
+                    <textarea name="address" placeholder="Address..." class="form-about-yourself form-control" id="address"></textarea>
+                  </div>
+                  <div class="form-group">
+                    <label class="sr-only" for="form-dob">DOB</label>
+
+                    <input type="date" name="dob" placeholder="Date of Birth..." data-toggle="tooltip" title="Date of Birth..." class="form-email form-control" id="dob">
+
+                  </div>
+                  <div class="form-group">
+                    <label class="sr-only" for="form-uname">Gender</label>
+                    <input type="text" name="gender" placeholder="Gender..." class="form-uname form-control" id="gender">
+                  </div>
+                  <div class="form-group">
+                    <label class="sr-only" for="form-phone">Phone</label>
+                    <input type="number" name="phone" placeholder="Phone No..." class="form-phone form-control" id="phone">
+                  </div>
+                  <div class="form-group">
+                    <label class="sr-only" for="form-uname">UName</label>
+                    <input type="text" name="uname" placeholder="Username..." class="form-uname form-control" id="uname">
+                  </div>
+
+                  <div class="form-group">
+
+                    <div class="alert" id="registermsg">
+                      <!--inner html to print-->
+                    </div>
+                  </div>
+                  <button type="button" class="btn" id="avail">Check username avialability</button>
+                </form>
+              </div>
+            </div>
+
+
+          </div>
+
+          <div class="col-sm-1 middle-border"></div>
+          <div class="col-sm-1"></div>
+
+          <div class="col-sm-5">
+
+            <div class="form-box">
+              <div class="form-top">
+                <div class="form-top-left">
+                  <h3>Secure high</h3>
+                  <p>Fill security questions and answers:</p>
+                </div>
+                <div class="form-top-right">
+                  <i class="fa fa-pencil"></i>
+                </div>
+              </div>
+              <div class="form-bottom">
+                <form role="form" action="" method="post" class="registration-form">
+
+                  <div class="form-group">
+                    <label class="sr-only" for="form-about-yourself">Securityqst</label>
+                    <textarea name="sqt" placeholder="Security question..." class="form-about-yourself form-control" id="sqt"></textarea>
+                  </div>
+                  <div class="form-group">
+                    <label class="sr-only" for="form-about-yourself">Answer</label>
+                    <textarea name="ans" placeholder="Answer..." class="form-about-yourself form-control" id="ans"></textarea>
+                  </div>
+                  <button type="button" class="btn" id="add">Add more</button>
+                  <div class="form-group ">
+                    <div class="alert " id="sqtmsg">
+                      <!--inner html to print-->
+                    </div>
+                  </div>
+                  <button type="button " class="btn" id="register">Register!</button>
+                </form>
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container ">
+      <div class="row ">
+
+        <div class="col-sm-8 col-sm-offset-2 ">
+          <div class="footer-border "></div>
+          <p><i class="fa fa-smile-o "></i></p>
+        </div>
+
+      </div>
+    </div>
+  </footer>
+
+  <!-- Javascript -->
+  <script src="assets/js/jquery-1.11.1.min.js "></script>
+  <script src="assets/js/jquery-1.11.1.min.js "></script>
+  <script src="assets/bootstrap/js/bootstrap.min.js "></script>
+  <script src="assets/js/jquery.backstretch.min.js "></script>
+  <script src="assets/js/scripts.js "></script>
+  <script>
+    $("#avail").click(function(e) {
+      e.preventDefault();
+      var user = document.getElementById("uname").value;
+      if (user.length === 0) {
+        $("#registermsg ").html("Fill the username");
+      } else {
+        $.post("availableprocess.php ", {
+          "uname": user
+        }).done(function(data1) {
+          //                       {"time ":"timevalue ","..... "}
+          //console.log(data);
+          var obj1 = JSON.parse(data1);
+          console.log(obj1.availablemsg);
+          //  if (obj.statuslogin == true) {
+          //  window.location = "home.php ";
+          //}
+          //$("#loginmsg ").text(obj.responnse);
+          // alert(data);
+          $("#registermsg ").html(obj1.availablemsg);
+        });
+      }
+
+    });
+    $("#add").click(function(e) {
+      e.preventDefault();
+      var sqst = document.getElementById("sqt").value;
+      var sans = document.getElementById("ans").value;
+      if (sqst.length === 0 || sans.length === 0) {
+        $("#sqtmsg").html("Question and Answer field is required");
+      } else {
+        $.post("questionprocess.php", {
+          "qst": sqst,
+          "ans": sans
+        }).done(function(data) {
+          //clear the qst and ans.
+          //var obj2 = JSON.parse(data2);
+          //$("#sqtmsg").text(data2);
+          $("#sqt").val(null);
+          $("#ans").val(null);
+          console.log(data);
+          $("#sqtmsg").html(data);
+        });
+      }
+    });
+    $("#register").click(function(e) {
+      e.preventDefault();
+      var fname = document.getElementById("f_name").value;
+      var lname = document.getElementById("l_name").value;
+      var email = document.getElementById("email").value;
+      var address = document.getElementById("address").value;
+      var dob = document.getElementById("dob").value;
+      var phone = document.getElementById("phone").value;
+      var gender = document.getElementById("gender").value;
+      var jdate = Date();
+      if (fname.length === 0 || lname.length === 0 || email.length === 0 || address.length === 0 || dob.length === 0 || phone.length === 0 || gender.length === 0) {
+        $("#sqtmsg").html("All fields are required.");
+        $("#registermsg ").html("All fields are required.");
+      } else {
+
+
+
+
+        var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+
+        if (!filter.test(email)) {
+          $("#sqtmsg").html('Please provide a valid email address');
+          $("#registermsg ").html('Please provide a valid email address');
+
+          document.getElementById("email").focus;
+          return false;
+        } else {
+
+          $.post("registerprocess.php", {
+            "f_name": fname,
+            "l_name": lname,
+            "email": email,
+            "address": address,
+            "dob": dob,
+            "phone": phone,
+            "gender": gender,
+            "jdate": jdate
+          }).done(function(data2) {
+            //all details in session
+            window.location = "uinpage.html";
+            console.log(data2);
+          });
+        }
+      }
+    });
+  </script>
+  <script>
+    var pause = false;
+    $(document).ready(function() {
+      $('[data-toggle="tooltip "]').tooltip();
+    });
+  </script>
+  <!--[if lt IE 10]>
+            <script src="assets/js/placeholder.js "></script>
+        <![endif]-->
+
+</body>
+
+</html>

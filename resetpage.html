@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>D password</title>
+
+  <!-- CSS -->
+
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="assets/css/form-elements.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <script type="text/javascript">
+  </script>
+
+  <!-- Favicon and touch icons -->
+  <link rel="shortcut icon" href="assets/ico/favicon.png">
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
+
+</head>
+
+<body>
+
+  <!-- Top content -->
+  <div class="top-content">
+
+    <div class="inner-bg">
+      <div class="container">
+
+        <div class="row">
+          <div class="col-sm-8 col-sm-offset-2 text">
+            <h1><strong>D</strong>-PASSWORD</h1>
+            <h4>Dynamic Password</h4>
+            <div class="description">
+
+
+
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-5">
+
+
+            <div class="form-box">
+              <div class="form-top">
+                <div class="form-top-left">
+                  <h3>UIN</h3>
+                  <p>Create a User Identification Number:</p>
+                </div>
+                <div class="form-top-right">
+                  <i class="fa fa-pencil"></i>
+                </div>
+              </div>
+              <div class="form-bottom">
+                <form role="form" action="" method="post" class="registration-form">
+                  <div class="form-group">
+                    <label class="sr-only" for="form-first-name">sequence</label>
+                    <input type="text" name="seq" placeholder="Alpha numeric sequence..." class="form-first-name form-control" id="seq" onblur="send()">
+                  </div>
+                  <div class="form-group">
+
+                    <div class="alert" id="registermsg">
+                      <!--inner html to print-->
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="sr-only" for="form-phone">UIN</label>
+                    <input type="number" name="uin_rec" placeholder="User Identification Number..." class="form-phone form-control" id="uin_rec">
+                  </div>
+
+                  <button type="button" class="btn" id="uin_confirm">Confirm!</button>
+                </form>
+              </div>
+            </div>
+
+
+          </div>
+
+          <div class="col-sm-1 middle-border"></div>
+          <div class="col-sm-1"></div>
+
+          <div class="col-sm-5">
+
+
+                        <div class="form-box">
+                          <div class="form-top">
+                            <div class="form-top-left">
+                              <h3>Expression</h3>
+                              <p>Create an Expression based on time variables:</p>
+                            </div>
+                            <div class="form-top-right">
+                              <i class="fa fa-pencil"></i>
+                            </div>
+                          </div>
+                          <div class="form-bottom">
+                            <form role="form" action="" method="post" class="registration-form">
+
+                              <div class="form-group">
+                                <label class="sr-only" for="form-first-name">expression</label>
+                                <input type="text" name="exp" placeholder="Expression..." class="form-first-name form-control" id="exp">
+                              </div>
+
+                              <input type="button" id='clock' class='btn btn-default' name="name" value="">
+                              <div class="form-group">
+                                <label class="sr-only" for="form-phone">test</label>
+                                <input type="number" name="res_exp" placeholder="Expression result..." class="form-phone form-control" id="res_exp">
+                              </div>
+
+                              <button type="button" class="btn" id="check">Check it!</button>
+                              <div class="form-group">
+
+                                <div class="alert" id="expmsg">
+                                  <!--inner html to print-->
+                                </div>
+                              </div>
+                              <button type="button" class="btn" id="confirm">Confirm!</button>
+                            </form>
+                          </div>
+                        </div>
+
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+
+        <div class="col-sm-8 col-sm-offset-2">
+          <div class="footer-border"></div>
+          <p><i class="fa fa-smile-o"></i></p>
+        </div>
+
+      </div>
+    </div>
+  </footer>
+
+  <!-- Javascript -->
+  <script src="assets/js/jquery-1.11.1.min.js"></script>
+  <script src="assets/js/jquery-1.11.1.min.js"></script>
+  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+  <script src="assets/js/jquery.backstretch.min.js"></script>
+  <script src="assets/js/scripts.js"></script>
+  <script>
+    function send() {
+      var sum = 0;
+      var anseq = document.getElementById("seq").value;
+      for (var i = 0; i < anseq.length; i++) {
+        sum += anseq.charCodeAt(i);
+      }
+      console.log(sum * anseq.length);
+      sum = sum * anseq.length;
+      $("#registermsg").html("Message Send,UIN:" + sum);
+    }
+
+    $("#uin_confirm").click(function(e) {
+      e.preventDefault();
+      var anseq = document.getElementById("seq").value;
+      var uinr = document.getElementById("uin_rec").value;
+      if (anseq.length === 0 || uinr.length === 0) {
+        $("#registermsg").html("All fields required.");
+      } else {
+
+
+        var sum = 0;
+        for (var i = 0; i < anseq.length; i++) {
+          sum += anseq.charCodeAt(i);
+        }
+        console.log(sum * anseq.length);
+        sum = sum * anseq.length;
+        //$("#registermsg").html("Message Send,UIN:"+sum);
+        $.post("uinmsgprocess.php", {
+          "uin": sum
+        }).done(function(data) {
+          var obj = JSON.parse(data);
+          if (obj.msgstatus == true) {
+            console.log(obj.uin);
+
+            if (uinr == sum) {
+              // print matches
+              $.post("uinprocess.php", {
+                "seq": anseq
+              }).done(function(data1) {
+                //confirmed no need to print.
+                //window.location = "expressionpage.html";
+              });
+            } else {
+              //print no match !
+            }
+          } else {
+            // resend
+          }
+        });
+      }
+    });
+
+
+    $("#check").click(function(e) {
+      e.preventDefault();
+
+      console.log(document.getElementById("clock").value);
+      var tval = document.getElementById("clock").value;
+      var tval1 = tval.split(":");
+      var tval2 = tval1[2].split(" ");
+
+      console.log(tval2);
+
+      var HH = tval1[0].toString();
+      var MM = tval1[1].toString();
+      var SS = tval2[0].toString();
+
+
+      //global
+
+      eqn = document.getElementById("exp").value;
+        res = document.getElementById("res_exp").value;
+      if (res.length === 0 && eqn.length === 0) {
+        $("#expmsg").html("All fields required.");
+      } else {
+
+
+        var eqn1 = eqn.replace(/hh/g, HH);
+        var eqn2 = eqn1.replace(/mm/g, MM);
+        var eqn3 = eqn2.replace(/ss/g, SS);
+        //var abc="2 + 2";
+        console.log(eqn3);
+        //  console.log(typeof(eqn1));
+        //console.log(typeof(abc));
+
+
+        try {
+          console.log(eval(eqn3));
+          if (res == eval(eqn3)) {
+            console.log("match");
+            $("#expmsg").html("Success.");
+          } else {
+            console.log("failed");
+            $("#expmsg").html("oh,retry!");
+          }
+        } catch (e) {
+          console.log("check your expression!");
+        }
+      }
+      //$.post("questionprocess.php",{"qst":sqst,"ans":sans}).done(function(data2) {
+
+      //});
+    });
+    $("#confirm").click(function(e) {
+      e.preventDefault();
+      //console.log("confirm:",eqn,eqn,eqn);
+      if (res.length === 0 && eqn.length === 0) {
+        $("#expmsg").html("All fields required.");
+      } else {
+        console.log("box" + eqn);
+        $.post("resetprocess.php", {
+          'exp': eqn
+        }).done(function(data) {
+          //print registeration success!
+          window.location = "home.php";
+console.log(data);
+
+        });
+      }
+    });
+  </script>
+  <script>
+    var pause = false;
+    $(document).ready(function() {
+      //$('[data-toggle="tooltip"]').tooltip();
+      //clock
+
+
+      // With this function we will assemble our clock,
+      // calling up whole date and then hours, minutes,
+      // and seconds individually.
+
+
+      function displayTime() {
+        var currentTime = new Date();
+        var hours = currentTime.getHours();
+        var minutes = currentTime.getMinutes();
+        var seconds = currentTime.getSeconds();
+
+
+        // Let's set the AM and PM meridiem and
+        // 12-hour format
+        var meridiem = "AM"; // Default is AM
+
+        // If hours is greater than 12
+        if (hours > 12) {
+          hours = hours - 12; // Convert to 12-hour format
+          meridiem = "PM"; // Keep track of the meridiem
+        }
+        // 0 AM and 0 PM should read as 12
+        if (hours === 0) {
+          hours = 12;
+        }
+
+
+        // If the hours digit is less than 10
+        if (hours < 10) {
+          // Add the "0" digit to the front
+          // so 9 becomes "09"
+          hours = "0" + hours;
+        }
+        // Format minutes and seconds the same way
+        if (minutes < 10) {
+          minutes = "0" + minutes;
+        }
+        if (seconds < 10) {
+          seconds = "0" + seconds;
+        }
+
+        // This gets a "handle" to the clock div in our HTML
+        //  var clockDiv = document.getElementById('clock');
+
+        // Then we set the text inside the clock div
+        // to the hours, minutes, and seconds of the current time
+        if (pause === true) {
+          console.log("pause!");
+        } else {
+          //clockDiv.innerText = hours + ":" + minutes + ":" + seconds + " " + meridiem;
+          console.log(pause);
+          $("#clock").prop('value', hours + ":" + minutes + ":" + seconds + " " + meridiem);
+
+        }
+
+      }
+
+      // This runs the displayTime function the first time
+      displayTime();
+
+      // This makes our clock 'tick' by repeatedly
+      // running the displayTime function every second.
+      setInterval(displayTime, 1000);
+
+    });
+    $("#clock").click(function() {
+      if (pause === true) {
+        pause = false;
+        $("#clock").removeClass("btn btn-primary");
+        $("#clock").addClass("btn btn-default");
+      } else {
+        pause = true;
+        $("#clock").removeClass("btn btn-default");
+        $("#clock").addClass("btn btn-primary");
+      }
+    });
+    $("#form-username").focus(function() {
+      $("#loginmsg").removeClass("alert-info alert-success");
+      $("#loginmsg").html("");
+
+    });
+    $("#form-uname").focus(function() {
+      $("#registermsg").removeClass("alert-info alert-success");
+      $("#registermsg").html("");
+
+
+
+    });
+  </script>
+
+  <!--[if lt IE 10]>
+            <script src="assets/js/placeholder.js"></script>
+        <![endif]-->
+
+</body>
+
+</html>
