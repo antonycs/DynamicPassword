@@ -2,19 +2,19 @@
 be dynamic !!!
 
 
-#### ->php
+#### -> php
 
-#### ->mysql
+#### -> mysql
 
 ## To try Dynamic Password
 
-1.clone it.
+1. Clone it.
 
-2.create a database named as dpass in mysql.
+2. Create a database named as dpass in mysql.
 
-3.import the dpass.sql to mysql.
+3. Import the dpass.sql to mysql.
 
-4.run it from localhost.
+4. Run it from localhost.
 
 
 
