@@ -29,7 +29,7 @@
 
 </head>
 
-<body>
+<body onload="clear()">
 
   <!-- Top content -->
   <div class="top-content">
@@ -81,7 +81,7 @@
 
 
                   <div class="form-group">
-                    <center><a href="recovery.php">Forgot password ?</a></center>
+                    <center><a href="recovery.html">Forgot password ?</a></center>
                     <button type="submit" class="btn" id="create">Create Account</button>
                   </div>
                 </form>
@@ -187,6 +187,13 @@
   <script src="assets/js/jquery.backstretch.min.js"></script>
   <script src="assets/js/scripts.js"></script>
   <script>
+  function clear() {
+    $.post("terminateprocess.php", {
+      "ter":"minate"
+    }).done(function(data) {
+      console.log("session cleared!");
+    });
+  }
   $("#create").click(function(e) {
     window.location = "regindex.html";
   });
