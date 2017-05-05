@@ -187,16 +187,16 @@
   <script src="assets/js/jquery.backstretch.min.js"></script>
   <script src="assets/js/scripts.js"></script>
   <script>
-  function clear() {
-    $.post("terminateprocess.php", {
-      "ter":"minate"
-    }).done(function(data) {
-      console.log("session cleared!");
+    function clear() {
+      $.post("terminateprocess.php", {
+        "ter": "minate"
+      }).done(function(data) {
+        console.log("session cleared!");
+      });
+    }
+    $("#create").click(function(e) {
+      window.location = "regindex.html";
     });
-  }
-  $("#create").click(function(e) {
-    window.location = "regindex.html";
-  });
     $("#login").click(function(e) {
       e.preventDefault();
       // take the paused time
@@ -223,8 +223,8 @@
           var MM = tval1[1].toString();
           var SS = tval2[0].toString();
 
-console.log(typeof(obj.responnse.expression));
-console.log(obj.responnse.uin);
+          console.log(typeof(obj.responnse.expression));
+          console.log(obj.responnse.uin);
 
           var eqn = obj.responnse.expression;
           var eqn1 = eqn.replace(/hh/g, HH);
@@ -248,22 +248,22 @@ console.log(obj.responnse.uin);
           }
 
           if (obj.password == (sum - eee)) {
-//console.log(un,obj.responnse.user_id);
+            //console.log(un,obj.responnse.user_id);
             $.post("trapprocess.php", {
-              "uname":un,
-              "user_id":obj.responnse.user_id
+              "uname": un,
+              "user_id": obj.responnse.user_id
             }).done(function(data1) {
               console.log(data1);
               window.location = "home.html";
             });
 
           } else {
-$("#loginmsg").text("Password is incorrect");
+            $("#loginmsg").text("Password is incorrect");
           }
 
 
         }
-$("#loginmsg").text(obj.responnse1);
+        $("#loginmsg").text(obj.responnse1);
 
       });
     });

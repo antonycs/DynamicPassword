@@ -93,41 +93,41 @@
           <div class="col-sm-5">
 
 
-                        <div class="form-box">
-                          <div class="form-top">
-                            <div class="form-top-left">
-                              <h3>Expression</h3>
-                              <p>Create an Expression based on time variables:</p>
-                            </div>
-                            <div class="form-top-right">
-                              <i class="fa fa-pencil"></i>
-                            </div>
-                          </div>
-                          <div class="form-bottom">
-                            <form role="form" action="" method="post" class="registration-form">
+            <div class="form-box">
+              <div class="form-top">
+                <div class="form-top-left">
+                  <h3>Expression</h3>
+                  <p>Create an Expression based on time variables:</p>
+                </div>
+                <div class="form-top-right">
+                  <i class="fa fa-pencil"></i>
+                </div>
+              </div>
+              <div class="form-bottom">
+                <form role="form" action="" method="post" class="registration-form">
 
-                              <div class="form-group">
-                                <label class="sr-only" for="form-first-name">expression</label>
-                                <input type="text" name="exp" placeholder="Expression..." class="form-first-name form-control" id="exp">
-                              </div>
+                  <div class="form-group">
+                    <label class="sr-only" for="form-first-name">expression</label>
+                    <input type="text" name="exp" placeholder="Expression..." class="form-first-name form-control" id="exp">
+                  </div>
 
-                              <input type="button" id='clock' class='btn btn-default' name="name" value="">
-                              <div class="form-group">
-                                <label class="sr-only" for="form-phone">test</label>
-                                <input type="number" name="res_exp" placeholder="Expression result..." class="form-phone form-control" id="res_exp">
-                              </div>
+                  <input type="button" id='clock' class='btn btn-default' name="name" value="">
+                  <div class="form-group">
+                    <label class="sr-only" for="form-phone">test</label>
+                    <input type="number" name="res_exp" placeholder="Expression result..." class="form-phone form-control" id="res_exp">
+                  </div>
 
-                              <button type="button" class="btn" id="check">Check it!</button>
-                              <div class="form-group">
+                  <button type="button" class="btn" id="check">Check it!</button>
+                  <div class="form-group">
 
-                                <div class="alert" id="expmsg">
-                                  <!--inner html to print-->
-                                </div>
-                              </div>
-                              <button type="button" class="btn" id="confirm">Confirm!</button>
-                            </form>
-                          </div>
-                        </div>
+                    <div class="alert" id="expmsg">
+                      <!--inner html to print-->
+                    </div>
+                  </div>
+                  <button type="button" class="btn" id="confirm">Confirm!</button>
+                </form>
+              </div>
+            </div>
 
 
           </div>
@@ -159,6 +159,8 @@
   <script src="assets/js/jquery.backstretch.min.js"></script>
   <script src="assets/js/scripts.js"></script>
   <script>
+  confirm_status=false;
+  confirm_flag=false;
     function send() {
       var sum = 0;
       var anseq = document.getElementById("seq").value;
@@ -195,6 +197,9 @@
 
             if (uinr == sum) {
               // print matches
+                  $("#registermsg").html("Success!");
+                    $("#expmsg").val(null);
+                  confirm_status=true;
               $.post("uinprocess.php", {
                 "seq": anseq
               }).done(function(data1) {
@@ -202,6 +207,7 @@
                 //window.location = "expressionpage.html";
               });
             } else {
+              confirm_status=false;
               //print no match !
             }
           } else {
@@ -230,7 +236,7 @@
       //global
 
       eqn = document.getElementById("exp").value;
-        res = document.getElementById("res_exp").value;
+      res = document.getElementById("res_exp").value;
       if (res.length === 0 && eqn.length === 0) {
         $("#expmsg").html("All fields required.");
       } else {
@@ -250,6 +256,7 @@
           if (res == eval(eqn3)) {
             console.log("match");
             $("#expmsg").html("Success.");
+
           } else {
             console.log("failed");
             $("#expmsg").html("oh,retry!");
@@ -261,10 +268,19 @@
       //$.post("questionprocess.php",{"qst":sqst,"ans":sans}).done(function(data2) {
 
       //});
+      confirm_flag=true;
     });
     $("#confirm").click(function(e) {
       e.preventDefault();
       //console.log("confirm:",eqn,eqn,eqn);
+      if (confirm_status==false) {
+$("#expmsg").html("UIN not match!");
+      }
+      else if (confirm_flag==false) {
+        $("#expmsg").html("Press Check it to continue.");
+      }
+      else {
+
       if (res.length === 0 && eqn.length === 0) {
         $("#expmsg").html("All fields required.");
       } else {
@@ -273,11 +289,16 @@
           'exp': eqn
         }).done(function(data) {
           //print registeration success!
-          window.location = "home.html";
-console.log(data);
+          $("#exp").val(null);
+          $("#res_exp").val(null);
+          $("#seq").val(null);
+          $("#uin_rec").val(null);
+          window.location = "index.html";
+        //  console.log(data);
 
         });
       }
+    }
     });
   </script>
   <script>

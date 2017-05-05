@@ -111,8 +111,7 @@
                   <div class="form-group">
                     <!--enter some help-->
                     <p>
-                      Input the expression by using the time variables eg: hh+mm*ss . The expression value
-                      can be solved using BODMAS rules.
+                      Input the expression by using the time variables eg: hh+mm*ss . The expression value can be solved using BODMAS rules.
                     </p>
                   </div>
 
@@ -174,7 +173,7 @@
       //global
 
       eqn = document.getElementById("exp").value;
-        res = document.getElementById("res_exp").value;
+      res = document.getElementById("res_exp").value;
       if (res.length === 0 && eqn.length === 0) {
         $("#registermsg").html("All fields required.");
       } else {
@@ -218,8 +217,7 @@
         }).done(function(data) {
           //print registeration success!
           window.location = "home.html";
-          console.log(data);
-          ;
+          console.log(data);;
         });
       }
     });

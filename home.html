@@ -1,5 +1,5 @@
-
 <html lang="en">
+
 <head>
 
   <title>DP</title>
@@ -10,34 +10,50 @@
   <script src="assets/js/jquery-1.11.1.min.js"></script>
   <script src="assets/bootstrap/js/bootstrap.min.js"></script>
   <style>
-  body {
+    body {
       font: 20px Montserrat, sans-serif;
       line-height: 1.8;
       color: #f5f6f7;
-  }
-  p {font-size: 16px;}
-  .margin {margin-bottom: 45px;}
-  .bg-1 {
-      background-color: #1abc9c; /* Green */
+    }
+
+    p {
+      font-size: 16px;
+    }
+
+    .margin {
+      margin-bottom: 45px;
+    }
+
+    .bg-1 {
+      background-color: #1abc9c;
+      /* Green */
       color: #ffffff;
-  }
-  .bg-2 {
-      background-color: #474e5d; /* Dark Blue */
+    }
+
+    .bg-2 {
+      background-color: #474e5d;
+      /* Dark Blue */
       color: #ffffff;
-  }
-  .bg-3 {
-      background-color: #ffffff; /* White */
+    }
+
+    .bg-3 {
+      background-color: #ffffff;
+      /* White */
       color: #555555;
-  }
-  .bg-4 {
-      background-color: #2f2f2f; /* Black Gray */
+    }
+
+    .bg-4 {
+      background-color: #2f2f2f;
+      /* Black Gray */
       color: #fff;
-  }
-  .container-fluid {
+    }
+
+    .container-fluid {
       padding-top: 70px;
       padding-bottom: 70px;
-  }
-  .navbar {
+    }
+
+    .navbar {
       padding-top: 15px;
       padding-bottom: 15px;
       border: 0;
@@ -45,76 +61,89 @@
       margin-bottom: 0;
       font-size: 12px;
       letter-spacing: 5px;
-  }
-  .navbar-nav  li a:hover {
+    }
+
+    .navbar-nav li a:hover {
       color: #1abc9c !important;
-  }
+    }
   </style>
 </head>
-<body onload="logger()">
 
-<!-- Navbar -->
-<nav class="navbar navbar-default">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-default">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">D-password</a>
+        <a class="navbar-brand" href="#">D-password</a>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <a href="#" id="name"></a>
+          </li>
+          <li>
+            <a href="resetpage.html">Edit</a>
+          </li>
+          <li><a href="/" id="logout_link">Logout</a></li>
+        </ul>
+      </div>
     </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#" id="name"></a></li>
-        <li><a href="#"></a></li>
-        <li><a href="/" id="logout_link" >Logout</a></li>
-      </ul>
-    </div>
+  </nav>
+
+  <!-- First Container -->
+  <div class="container-fluid bg-1 text-center">
+    <h3 class="margin">Welcome</h3>
+
+    <h1 id="full_name"></h1>
   </div>
-</nav>
 
-<!-- First Container -->
-<div class="container-fluid bg-1 text-center">
-  <h3 class="margin">Welcome</h3>
+  <!-- Second Container -->
+  <div class="container-fluid bg-2 text-center">
+    <h3 class="margin">About</h3>
+    <p>Your heart is just a beatbox for the song of your life. life is a song,sing it!.
+    </p>
 
-  <h1 id="full_name"></h1>
-</div>
-
-<!-- Second Container -->
-<div class="container-fluid bg-2 text-center">
-  <h3 class="margin">About</h3>
-  <p>Your heart is just a beatbox for the song of your life.
-    life is a song,sing it!.
-  </p>
-
-</div>
+  </div>
 
 
-<!-- Footer -->
-<footer class="container-fluid bg-4 text-center">
-  <p id="email"></p>
-</footer>
-<script>
-function logger() {
-  $.post("homeprocess.php", {
-    "ter":"minate"
-  }).done(function(data1) {
-    console.log(data1);
-    var obj5 = JSON.parse(data1);
-    $("#name").html(obj5.user_name);
-    $("#full_name").html(obj5.a.f_name+' '+obj5.a.l_name);
-    $("#email").html(obj5.a.email);
-  });
-}
-$("#logout_link").click(function(e) {
-  e.preventDefault();
-$.post("terminateprocess.php", {
-  "ter":"minate"
-}).done(function(data) {
-  window.location = "index.html";
-});
-});
-</script>
+  <!-- Footer -->
+  <footer class="container-fluid bg-4 text-center">
+    <p id="email"></p>
+  </footer>
+  <script>
+  window.onpaint = logger();
+    function logger() {
+      $.post("homeprocess.php", {
+        "ter": "minate"
+      }).done(function(data1) {
+        console.log(data1);
+        var obj5 = JSON.parse(data1);
+        if (obj5.user_name=='goback') {
+          window.location = "index.html";
+        } else {
+
+
+        $("#name").html('@'+obj5.user_name);
+        $("#full_name").html(obj5.a.f_name + ' ' + obj5.a.l_name);
+        $("#email").html(obj5.a.email);
+      }
+      });
+    }
+    $("#logout_link").click(function(e) {
+      e.preventDefault();
+      $.post("terminateprocess.php", {
+        "ter": "minate"
+      }).done(function(data) {
+        window.location = "index.html";
+      });
+    });
+  </script>
 </body>
+
 </html>

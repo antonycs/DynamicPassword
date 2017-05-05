@@ -108,8 +108,7 @@
                   <div class="form-group">
                     <!--enter some help-->
                     <p>
-                      Input the alphanumeric sequence.for eg: A@d1^ .A user identification  number is generated and
-                      it will be displayed here.This UIN is required for further operations. So,please do n't forget this UIN.
+                      Input the alphanumeric sequence.for eg: A@d1^ .A user identification number is generated and it will be displayed here.This UIN is required for further operations. So,please do n't forget this UIN.
                     </p>
                   </div>
 
@@ -153,57 +152,56 @@
   <script src="assets/js/jquery.backstretch.min.js"></script>
   <script src="assets/js/scripts.js"></script>
   <script>
-
-function send() {
-  var sum = 0;
-  var anseq = document.getElementById("seq").value;
-  for (var i = 0; i < anseq.length; i++) {
-    sum += anseq.charCodeAt(i);
-  }
-  console.log(sum * anseq.length);
-  sum = sum * anseq.length;
-  $("#registermsg").html("Message Send,UIN:"+sum);
-}
-
-    $("#uin_confirm").click(function(e) {
-      e.preventDefault();
-      var anseq = document.getElementById("seq").value;
-var uinr = document.getElementById("uin_rec").value;
-if (anseq.length===0 || uinr.length===0) {
-  $("#registermsg").html("All fields required.");
-} else {
-
-
+    function send() {
       var sum = 0;
+      var anseq = document.getElementById("seq").value;
       for (var i = 0; i < anseq.length; i++) {
         sum += anseq.charCodeAt(i);
       }
       console.log(sum * anseq.length);
       sum = sum * anseq.length;
-      //$("#registermsg").html("Message Send,UIN:"+sum);
-      $.post("uinmsgprocess.php", {
-        "uin": sum
-      }).done(function(data) {
-        var obj = JSON.parse(data);
-        if (obj.msgstatus == true) {
-          console.log(obj.uin);
-
-          if (uinr == sum) {
-            // print matches
-            $.post("uinprocess.php", {
-              "seq": anseq
-            }).done(function(data1) {
-              //confirmed no need to print.
-              window.location = "expressionpage.html";
-            });
-          } else {
-            //print no match !
-          }
-        } else {
-          // resend
-        }
-      });
+      $("#registermsg").html("Message Send,UIN:" + sum);
     }
+
+    $("#uin_confirm").click(function(e) {
+      e.preventDefault();
+      var anseq = document.getElementById("seq").value;
+      var uinr = document.getElementById("uin_rec").value;
+      if (anseq.length === 0 || uinr.length === 0) {
+        $("#registermsg").html("All fields required.");
+      } else {
+
+
+        var sum = 0;
+        for (var i = 0; i < anseq.length; i++) {
+          sum += anseq.charCodeAt(i);
+        }
+        console.log(sum * anseq.length);
+        sum = sum * anseq.length;
+        //$("#registermsg").html("Message Send,UIN:"+sum);
+        $.post("uinmsgprocess.php", {
+          "uin": sum
+        }).done(function(data) {
+          var obj = JSON.parse(data);
+          if (obj.msgstatus == true) {
+            console.log(obj.uin);
+
+            if (uinr == sum) {
+              // print matches
+              $.post("uinprocess.php", {
+                "seq": anseq
+              }).done(function(data1) {
+                //confirmed no need to print.
+                window.location = "expressionpage.html";
+              });
+            } else {
+              //print no match !
+            }
+          } else {
+            // resend
+          }
+        });
+      }
     });
   </script>
 
