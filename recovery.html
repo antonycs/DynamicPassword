@@ -159,7 +159,9 @@
       }).done(function(data1) {
         var obj1 = JSON.parse(data1);
         if (obj1.availablemsg == true) {
+          $("#registermsg").val(null);
           console.log("true");
+
           $.post("getquestionsprocess.php", {
             "uname": unn
           }).done(function(data2) {
@@ -176,37 +178,43 @@
 
         } else {
           console.log("false");
+          $("#registermsg").html("Enter a valid username.");
         }
       });
     }
     $("#next").click(function(e) {
       e.preventDefault();
       //console.log(obj3.length);
-      if (i < obj3.length - 1) {
-        var answer = document.getElementById('ans').value;
-        if (answer == obj3[i].ans) {
-          count++;
-          console.log(count);
-        }
-        console.log(i);
-        i++;
-        $("#qst").text(obj3[i].qst);
-$("#ans").val(null);
-
+      if (document.getElementById('uname').value.length === 0) {
+        $("#registermsg").html("Enter a valid username.");
       } else {
-        $("#ans").val(null);
-        $("#uname").val(null);
-        if (count > 1) {
-          //goto next page
-          console.log("success");
-          window.location = "resetpage.html";
+
+        $("#registermsg").val(null);
+        if (i < obj3.length - 1) {
+          var answer = document.getElementById('ans').value;
+          if (answer == obj3[i].ans) {
+            count++;
+            console.log(count);
+          }
+          console.log(i);
+          i++;
+          $("#qst").text(obj3[i].qst);
+          $("#ans").val(null);
+
         } else {
-          //goto login page
-          console.log("failed");
-          window.location = "index.html";
+          $("#ans").val(null);
+          $("#uname").val(null);
+          if (count > 1) {
+            //goto next page
+            console.log("success");
+            window.location = "resetpage.html";
+          } else {
+            //goto login page
+            console.log("failed");
+            window.location = "index.html";
+          }
         }
       }
-
 
     });
   </script>
